@@ -212,4 +212,3 @@ static void sugov_deferred_update(struct sugov_policy *sg_policy, u64 time,
 /**
  * get_next_freq - Compute a new frequency for a given cpufreq policy.
  * @sg_policy: schedutil policy object to 
-{
