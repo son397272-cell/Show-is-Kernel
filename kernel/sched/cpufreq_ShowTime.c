@@ -1299,8 +1299,8 @@ if (!policy->fast_switch_enabled) {
 
 }
 
-struct cpufreq_governor schedutil_gov = {
-.name                        = "schedutil",
+struct cpufreq_governor showtime_gov = {
+.name                        = "ShowTime",
 .owner                        = THIS_MODULE,
 .dynamic_switching        = true,
 .init                        = sugov_init,
