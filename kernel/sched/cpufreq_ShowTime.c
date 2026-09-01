@@ -1352,7 +1352,7 @@ return &schedutil_gov;
 
 static int __init sugov_register(void)
 {
-return cpufreq_register_governor(&schedutil_gov);
+return cpufreq_register_governor(&showtime_gov);
 }
 fs_initcall(sugov_register);
 
