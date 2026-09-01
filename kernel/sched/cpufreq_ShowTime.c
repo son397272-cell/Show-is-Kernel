@@ -3,7 +3,7 @@
  *
  * Developer - Skinger49
  *
- * Device - Samsung Galaxy S20 Ultra (Exynos)
+ * Device - Samsung Galaxy S20 Ultra Exynos
  */
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
