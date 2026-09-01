@@ -1,25 +1,23 @@
-name: R8S
+
+name: ShowTime Kernel Compiler
 
 on:
-  push:
-    branches: [ RAGNARØK ]
-    paths:
-      - 'arch/arm64/configs/exynos9830_defconfig'
-  pull_request:
-    branches: [ RAGNARØK ]
-    paths:
-      - 'arch/arm64/configs/exynos9830_defconfig'
   workflow_dispatch:
     inputs:
-      force_build:
-        description: 'Force build even if exynos9830_defconfig is not modified (manual trigger)'
-        type: boolean
-        default: false
+      target_device:
+        description: 'Выберите модель для сборки'
+        required: true
+        default: 'z3s'
+        type: choice
+        options:
+          - z3s
+          - r8s
+          - c1s
+          - x1s
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,12 +27,12 @@ jobs:
       - name: Set up environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y libarchive-tools ccache
+          sudo apt-get install -y libarchive-tools ccache bc bison flex libelf-dev libssl-dev make clang lld
 
       - name: Build Kernel
         run: |
           chmod +x ./build.sh
-          ./build.sh -m r8s -k y
+          ./build.sh -m ${{ github.event.inputs.target_device }} -k y
 
       - name: Find built zips
         id: find_zips
@@ -51,5 +49,5 @@ jobs:
       - name: Upload built kernels
         uses: actions/upload-artifact@v4
         with:
-          name: built-kernels
+          name: ShowTime-Kernel-${{ github.event.inputs.target_device }}
           path: ${{ env.ZIP_FILES }}
