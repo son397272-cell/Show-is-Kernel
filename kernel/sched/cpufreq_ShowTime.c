@@ -1,7 +1,6 @@
 /*
  * ShowTime By Skinger49
  *
- * Developer - Skinger49
  *
  * Device - Samsung Galaxy S20 Ultra Exynos
  */
@@ -989,7 +988,7 @@ static void showtime_limits(struct cpufreq_policy *policy)
 }
 
 struct cpufreq_governor showtime_gov = {
-        .name                        = "ShowTime",
+        .name                        = "showtime",
         .owner                        = THIS_MODULE,
         .dynamic_switching        = true,
         .init                        = showtime_init,
